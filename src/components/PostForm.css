@@ -1,0 +1,52 @@
+.Form {
+  border: 1px solid black;
+  width: 800px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.label {
+  width:60px;
+  font-size:20px;
+  line-height:24px;
+  font-weight:bold;
+}
+
+.Form-title {
+  height: 20px;
+  width: 400px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 8px;
+}
+
+.Form-writer {
+  height: 20px;
+  width: 400px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 8px;
+}
+
+.Form-content {
+  height: 150px;
+  width: 400px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 8px;
+}
+
+.Form-button {
+  margin-top:5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border:2px solid #09F;
+  background-color:#09F;
+  color:#fff;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  font-weight:bold;
+  text-align: center;
+}

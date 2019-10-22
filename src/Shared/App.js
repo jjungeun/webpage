@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PostForm from './components/PostForm';
-import PostList from './components/PostList';
+import PostForm from '../components/PostForm';
+import PostList from '../components/PostList';
 import './App.css';
 
 class App extends Component {
@@ -44,7 +44,7 @@ class App extends Component {
           onUpdate={this.handleUpdate}
           onRemove={this.handleRemove}
         />
-      </div>
+      </div >
     );
   }
 }
