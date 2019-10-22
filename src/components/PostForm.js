@@ -29,6 +29,7 @@ class PostForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="Form">
+        <h2>방명록</h2>
         <table >
           <tr>
             <td><label for="title" className="label">제목</label></td>
