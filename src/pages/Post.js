@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import PostForm from '../components/PostForm';
-import PostList from '../components/PostList';
-import './App.css';
+import { Link, Route } from 'react-router-dom';
+import PostList from 'components/PostList';
+import { AddPost } from 'pages';
 
-class App extends Component {
+class Post extends Component {
   id = 0;
   state = {
     post: [],
     keyword: ''
-  }
-
-  handleCreate = (data) => {
-    const { post } = this.state;
-    this.setState({
-      post: post.concat({ id: this.id++, ...data })
-    });
   }
 
   handleUpdate = (id, data) => {
@@ -37,16 +30,17 @@ class App extends Component {
   render() {
     const { post } = this.state;
     return (
-      <div className="App">
-        <PostForm onCreate={this.handleCreate} />
+      <div>
+        <h2>Post List</h2>
         <PostList
           data={post}
           onUpdate={this.handleUpdate}
           onRemove={this.handleRemove}
         />
-      </div >
+        <li><Link exact to="/post/add" component={AddPost}>Add</Link></li>
+      </div>
     );
   }
-}
+};
 
-export default App;
+export default Post;
