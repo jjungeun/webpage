@@ -3,7 +3,7 @@ import React from 'react';
 const Home = () => (
   <div>
     <h2>
-      home
+      Fininsight home
     </h2>
   </div>
 );

@@ -31,44 +31,46 @@ class PostForm extends Component {
       <form onSubmit={this.handleSubmit} className="Form">
         <h2>게시글</h2>
         <table >
-          <tr>
-            <td><label for="title" className="label">제목</label></td>
-            <td>
-              <input
-                className="Form-title"
-                value={this.state.title}
-                onChange={this.handleChange}
-                name="title"
-                maxLength="20"
-                required="required"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="title" className="label">작성자</label></td>
-            <td>
-              <input
-                className="Form-writer"
-                value={this.state.writer}
-                onChange={this.handleChange}
-                name="writer"
-                maxLength="20"
-                required="required"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="title" className="label">내용</label></td>
-            <td>
-              <input
-                className="Form-content"
-                value={this.state.content}
-                onChange={this.handleChange}
-                name="content"
-                required="required"
-              />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td><label htmlFor="title" className="label">제목</label></td>
+              <td>
+                <input
+                  className="Form-title"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  name="title"
+                  maxLength="20"
+                  required="required"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label htmlFor="title" className="label">작성자</label></td>
+              <td>
+                <input
+                  className="Form-writer"
+                  value={this.state.writer}
+                  onChange={this.handleChange}
+                  name="writer"
+                  maxLength="20"
+                  required="required"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label htmlFor="title" className="label">내용</label></td>
+              <td>
+                <input
+                  className="Form-content"
+                  value={this.state.content}
+                  onChange={this.handleChange}
+                  name="content"
+                  required="required"
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div>
           <button type="submit" className="Form-button">post</button>

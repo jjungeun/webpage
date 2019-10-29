@@ -18,7 +18,7 @@ class PostList extends Component {
 
     return (
       <div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="cols" className="table-th">번호</th>

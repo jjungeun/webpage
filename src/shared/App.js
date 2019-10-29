@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
-import { Home, Post } from 'pages';
+import { Route } from 'react-router-dom';
+import { Home, Posts } from 'pages';
 import Menu from 'components/Menu';
 
 class App extends Component {
@@ -10,13 +10,7 @@ class App extends Component {
       <div className="App">
         <Menu />
         <Route exact path="/" component={Home} />
-        <Switch>
-          <Route path="/post/add" component={Post} />
-          <Route path="/post/:id/edit" component={Post} />
-          <Route path="/post/:id/delete" component={Post} />
-          <Route path="/post/:id" component={Post} />
-          <Route path="/post" component={Post} />
-        </Switch>
+        <Route path="/post" component={Posts} />
       </div >
     );
   }

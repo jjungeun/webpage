@@ -1,0 +1,14 @@
+.Add-button {
+  margin-top:5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border:2px solid #09F;
+  background-color:#09F;
+  color:#fff;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  font-weight:bold;
+  text-align: center;
+}

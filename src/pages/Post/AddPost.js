@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import PostForm from 'components/PostForm';
 
 class AddPost extends Component {
-
-  handleCreate = (data) => {
-    const { post } = this.state;
-    this.setState({
-      post: post.concat({ id: this.id++, ...data })
-    });
-  }
   render() {
+    const { onCreate } = this.props;
     return (
       <div>
-        <PostForm onCreate={this.handleCreate} />
+        <PostForm onCreate={onCreate} />
       </div>
     );
   }
