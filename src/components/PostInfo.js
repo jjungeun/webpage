@@ -50,6 +50,11 @@ class PostInfo extends Component {
     }
   }
 
+  handleClick = () => {
+    const { post, onClick } = this.props;
+    onClick(post.id);
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     if (!this.state.editMode && !nextState.editMode && nextProps.post === this.props.post)
       return false;
@@ -101,7 +106,7 @@ class PostInfo extends Component {
       return (
         <tr>
           <td className="td">{id}</td>
-          <td className="td">{title}</td>
+          <td className="td"><button onClick={this.handleClick}>{title}</button></td>
           <td className="td">{writer}</td>
           <td className="td">{content}</td>
           <td className="td">{date}</td>

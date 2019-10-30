@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
-import { AddPost, ListPost } from 'pages';
+import { AddPost, ListPost, DetailPost } from 'pages';
 import './Posts.css';
 
 class Post extends Component {
@@ -35,22 +35,37 @@ class Post extends Component {
     });
   }
 
+  handleClick = (id) => {
+    const { post } = this.state;
+    this.setState({
+      post: post.filter(post => post.id === id)
+    });
+    this.props.history.push(`post/` + id);
+  }
+
   render() {
     const { post } = this.state;
     const { match } = this.props;
-    // console.log(post);
+
     return (
       <div>
         <Switch>
           <Route path="/post/add">
             <AddPost onCreate={this.handleCreate} />
           </Route>
-          {/* <Route path="/post/:id" component={DetailPost} /> */}
+          <Route path={`/post/:id`} >
+            <DetailPost
+              data={post}
+              onUpdate={this.handleUpdate}
+              onRemove={this.handleRemove}
+            />
+          </Route>
           <Route exact path="/post">
             <ListPost
               data={post}
               onUpdate={this.handleUpdate}
               onRemove={this.handleRemove}
+              onClick={this.handleClick}
             />
             <Link to={`${match.url}/add`}>
               <button className="Add-button">Add</button>

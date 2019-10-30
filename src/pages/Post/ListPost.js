@@ -9,7 +9,7 @@ class ListPost extends Component {
   }
 
   render() {
-    const { data, onUpdate, onRemove } = this.props;
+    const { data, onUpdate, onRemove, onClick } = this.props;
     return (
       <div>
         <h2>Post List</h2>
@@ -17,6 +17,7 @@ class ListPost extends Component {
           data={data}
           onUpdate={onUpdate}
           onRemove={onRemove}
+          onClick={onClick}
         />
       </div>
     );

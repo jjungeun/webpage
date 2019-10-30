@@ -14,7 +14,7 @@ class PostList extends Component {
   }
 
   render() {
-    const { data, onUpdate, onRemove } = this.props;
+    const { data, onUpdate, onRemove, onClick } = this.props;
 
     return (
       <div>
@@ -36,6 +36,7 @@ class PostList extends Component {
                   post={post}
                   onUpdate={onUpdate}
                   onRemove={onRemove}
+                  onClick={onClick}
                 />
               )
             )}
