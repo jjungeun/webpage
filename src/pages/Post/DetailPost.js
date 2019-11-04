@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-import { EditPost, DeletePost } from 'pages';
 import PostInfoDetail from 'components/PostInfoDetail';
 
 class DetailPost extends Component {
-  render() {
-    const { data, onUpdate, onRemove } = this.props;
+  constructor(props){
+    super(props);
+    const { data, id } = this.props;
+    this.state = {
+      post: data.find(data => (data.id === id))
+    };
+  }
 
+  render() {
+    const { onUpdate, onRemove, onClick } = this.props;
+    const { post } = this.state;
     return (
       <div>
         <PostInfoDetail
-          post={data[0]}
+          post={post}
           onUpdate={onUpdate}
           onRemove={onRemove}
+          onClick={onClick}
         />
-        {/* <Route path="/post/:id/edit" component={EditPost} />
-        <Route path="/post/:id/delete" component={DeletePost} /> */}
       </div>
     );
   }

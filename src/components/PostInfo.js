@@ -106,7 +106,7 @@ class PostInfo extends Component {
       return (
         <tr>
           <td className="td">{id}</td>
-          <td className="td"><button onClick={this.handleClick}>{title}</button></td>
+          <td className="td"><a onClick={this.handleClick} className="title">{title}</a></td>
           <td className="td">{writer}</td>
           <td className="td">{content}</td>
           <td className="td">{date}</td>

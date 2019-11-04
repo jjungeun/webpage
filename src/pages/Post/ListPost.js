@@ -9,7 +9,7 @@ class ListPost extends Component {
   }
 
   render() {
-    const { data, onUpdate, onRemove, onClick } = this.props;
+    const { data, onUpdate, onRemove ,onClick } = this.props;
     return (
       <div>
         <h2>Post List</h2>

@@ -59,16 +59,87 @@ class PostInfoDetail extends Component {
     const { id, title, content, writer, date } = this.props.post;
     const { editMode } = this.state;
 
-    return (
-      <div>
-        <h2>{id}</h2>
-        <h2>{title}</h2>
-        <h2>{content}</h2>
-        <h2>{writer}</h2>
-        <h2>{date}</h2>
-      </div>
-    );
-
+    if(editMode){
+      return(
+        <form className="Form">
+          <table>
+            <tbody>
+              <tr>
+                <td><label htmlFor="title" className="label">제목</label></td>
+                <td>
+                  <input
+                    className="Form-title"
+                    value={this.state.title}
+                    onChange={this.handleChange}
+                    name="title"
+                    maxLength="20"
+                    required="required"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">작성자</label></td>
+                <td>
+                  <input
+                    className="Form-writer"
+                    value={this.state.writer}
+                    onChange={this.handleChange}
+                    name="writer"
+                    maxLength="20"
+                    required="required"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">내용</label></td>
+                <td>
+                  <input
+                    className="Form-content"
+                    value={this.state.content}
+                    onChange={this.handleChange}
+                    name="content"
+                    required="required"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button onClick={this.handleToggle} className="td-button">update</button>
+          <button onClick={this.handleRemove} className="td-button">remove</button>
+        </form>
+      );
+    } else{
+      return (
+        <form className="Form">
+          <table>
+            <tbody>
+              <tr>
+                <td><label htmlFor="title" className="label">번호</label></td>
+                <td>{id}</td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">제목</label></td>
+                <td>{title}</td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">내용</label></td>
+                <td>{content}</td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">작성자</label></td>
+                <td>{writer}</td>
+              </tr>
+              <tr>
+                <td><label htmlFor="title" className="label">작성일</label></td>
+                <td>{date}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button onClick={this.handleToggle} className="td-button">edit</button>
+          <button onClick={this.handleRemove} className="td-button">remove</button>
+        </form>
+      );
+    }
   }
 }
 

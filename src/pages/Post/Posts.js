@@ -7,6 +7,7 @@ class Post extends Component {
   id = 0;
   state = {
     post: [],
+    filterId: '',
     keyword: ''
   }
 
@@ -36,15 +37,14 @@ class Post extends Component {
   }
 
   handleClick = (id) => {
-    const { post } = this.state;
     this.setState({
-      post: post.filter(post => post.id === id)
-    });
+      filterId: id
+    })
     this.props.history.push(`post/` + id);
   }
 
   render() {
-    const { post } = this.state;
+    const { post, filterId } = this.state;
     const { match } = this.props;
 
     return (
@@ -53,13 +53,15 @@ class Post extends Component {
           <Route path="/post/add">
             <AddPost onCreate={this.handleCreate} />
           </Route>
-          <Route path={`/post/:id`} >
+          <Route path={`/post/:id`} render={() => (
             <DetailPost
+              {...this.props}
               data={post}
+              id = {filterId}
               onUpdate={this.handleUpdate}
               onRemove={this.handleRemove}
             />
-          </Route>
+          )}/>
           <Route exact path="/post">
             <ListPost
               data={post}
