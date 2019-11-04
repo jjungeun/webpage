@@ -2,7 +2,8 @@
   border: 1px solid black;
   width: 700px;
   padding: 8px;
-  margin: 20px 10px;
+  margin: auto;
+  margin-top: 100px;
   align-content: center;
 }
 
