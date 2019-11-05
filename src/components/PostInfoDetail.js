@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 
 class PostInfoDetail extends Component {
   static defaultProps = {
-    id: 0,
-    title: '',
-    content: '',
-    writer: '',
-    date: ''
+    post: {},
+    onUpdate: () => console.warn('onUpdate not defined'),
+    onRemove: () => console.warn('onRemove not defined')
   }
+
   state = {
     editMode: false,
     title: '',
@@ -21,46 +20,43 @@ class PostInfoDetail extends Component {
     });
   }
 
-  handleRemove = () => {
-    const { post, onRemove } = this.props;
-    onRemove(post.id);
-  }
-
   handleToggle = () => {
     this.setState({
       editMode: !this.state.editMode
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { post, onUpdate } = this.props;
-    if (!prevState.editMode && this.state.editMode) {
-      this.setState({
-        title: post.title,
-        content: post.content,
-        writer: post.writer
-      });
-    } else if (prevState.editMode && !this.state.editMode) {
-      onUpdate(post.id, {
-        title: this.state.title,
-        content: this.state.content,
-        writer: this.state.writer,
-      });
-    }
+  handleRemove = () => {
+    const { post, onRemove } = this.props;
+    onRemove(post.id);
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { post, onUpdate } = this.props;
+  //   if (!prevState.editMode && this.state.editMode) {
+  //     this.setState({
+  //       title: post.title,
+  //       content: post.content,
+  //       writer: post.writer
+  //     });
+  //   } else if (prevState.editMode && !this.state.editMode) {
+  //     onUpdate(post.id, {
+  //       title: this.state.title,
+  //       content: this.state.content,
+  //       writer: this.state.writer,
+  //     });
+  //   }
+  // }
+
   shouldComponentUpdate(nextProps, nextState) {
-    if (!this.state.editMode && !nextState.editMode && nextProps.post === this.props.post)
-      return false;
-    return true;
+    return this.state.editMode;
   }
 
   render() {
     const { id, title, content, writer, date } = this.props.post;
     const { editMode } = this.state;
-
-    if(editMode){
-      return(
+    if (editMode) {
+      return (
         <form className="Form">
           <table>
             <tbody>
@@ -70,7 +66,7 @@ class PostInfoDetail extends Component {
                   <input
                     className="Form-title"
                     value={this.state.title}
-                    onChange={this.handleChange}
+                    onChange={this.handleUpdate}
                     name="title"
                     maxLength="20"
                     required="required"
@@ -83,7 +79,7 @@ class PostInfoDetail extends Component {
                   <input
                     className="Form-writer"
                     value={this.state.writer}
-                    onChange={this.handleChange}
+                    onChange={this.handleUpdate}
                     name="writer"
                     maxLength="20"
                     required="required"
@@ -96,7 +92,7 @@ class PostInfoDetail extends Component {
                   <input
                     className="Form-content"
                     value={this.state.content}
-                    onChange={this.handleChange}
+                    onChange={this.handleUpdate}
                     name="content"
                     required="required"
                   />
@@ -105,10 +101,9 @@ class PostInfoDetail extends Component {
             </tbody>
           </table>
           <button onClick={this.handleToggle} className="td-button">update</button>
-          <button onClick={this.handleRemove} className="td-button">remove</button>
         </form>
       );
-    } else{
+    } else {
       return (
         <form className="Form">
           <table>

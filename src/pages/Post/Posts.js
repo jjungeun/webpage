@@ -27,6 +27,7 @@ class Post extends Component {
         : post
       )
     });
+    // this.props.history.replace(`/post/` + id);
   }
 
   handleRemove = (id) => {
@@ -34,6 +35,7 @@ class Post extends Component {
     this.setState({
       post: post.filter(post => post.id !== id)
     });
+    this.props.history.replace(`/post`);
   }
 
   handleClick = (id) => {
@@ -41,6 +43,10 @@ class Post extends Component {
       filterId: id
     })
     this.props.history.push(`post/` + id);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState !== this.state;
   }
 
   render() {
@@ -57,11 +63,11 @@ class Post extends Component {
             <DetailPost
               {...this.props}
               data={post}
-              id = {filterId}
+              id={filterId}
               onUpdate={this.handleUpdate}
               onRemove={this.handleRemove}
             />
-          )}/>
+          )} />
           <Route exact path="/post">
             <ListPost
               data={post}
