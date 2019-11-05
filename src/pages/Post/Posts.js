@@ -27,7 +27,7 @@ class Post extends Component {
         : post
       )
     });
-    // this.props.history.replace(`/post/` + id);
+    this.props.history.replace(`/post/` + id);
   }
 
   handleRemove = (id) => {
@@ -52,7 +52,6 @@ class Post extends Component {
   render() {
     const { post, filterId } = this.state;
     const { match } = this.props;
-
     return (
       <div>
         <Switch>
@@ -71,8 +70,6 @@ class Post extends Component {
           <Route exact path="/post">
             <ListPost
               data={post}
-              onUpdate={this.handleUpdate}
-              onRemove={this.handleRemove}
               onClick={this.handleClick}
             />
             <Link to={`${match.url}/add`}>

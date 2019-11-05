@@ -4,9 +4,7 @@ import './PostList.css';
 
 class PostList extends Component {
   static defaultProps = {
-    post: [],
-    onUpdate: () => console.warn('onUpdate not defined'),
-    onRemove: () => console.warn('onRemove not defined')
+    post: []
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -14,7 +12,7 @@ class PostList extends Component {
   }
 
   render() {
-    const { data, onUpdate, onRemove, onClick } = this.props;
+    const { data, onClick } = this.props;
 
     return (
       <div>
@@ -34,8 +32,6 @@ class PostList extends Component {
                 <PostInfo
                   key={post.id}
                   post={post}
-                  onUpdate={onUpdate}
-                  onRemove={onRemove}
                   onClick={onClick}
                 />
               )

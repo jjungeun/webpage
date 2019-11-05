@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 
 class PostInfoDetail extends Component {
-  static defaultProps = {
-    post: {},
-    onUpdate: () => console.warn('onUpdate not defined'),
-    onRemove: () => console.warn('onRemove not defined')
-  }
-
   state = {
     editMode: false,
     title: '',
@@ -20,7 +14,8 @@ class PostInfoDetail extends Component {
     });
   }
 
-  handleToggle = () => {
+  handleToggle = (e) => {
+    e.preventDefault();
     this.setState({
       editMode: !this.state.editMode
     });
@@ -31,30 +26,27 @@ class PostInfoDetail extends Component {
     onRemove(post.id);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { post, onUpdate } = this.props;
-  //   if (!prevState.editMode && this.state.editMode) {
-  //     this.setState({
-  //       title: post.title,
-  //       content: post.content,
-  //       writer: post.writer
-  //     });
-  //   } else if (prevState.editMode && !this.state.editMode) {
-  //     onUpdate(post.id, {
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       writer: this.state.writer,
-  //     });
-  //   }
-  // }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.editMode;
+  componentDidUpdate(prevProps, prevState) {
+    const { post, onUpdate } = this.props;
+    if (!prevState.editMode && this.state.editMode) {
+      this.setState({
+        title: post.title,
+        content: post.content,
+        writer: post.writer
+      });
+    } else if (prevState.editMode && !this.state.editMode) {
+      onUpdate(post.id, {
+        title: this.state.title,
+        content: this.state.content,
+        writer: this.state.writer,
+      });
+    }
   }
 
   render() {
     const { id, title, content, writer, date } = this.props.post;
     const { editMode } = this.state;
+
     if (editMode) {
       return (
         <form className="Form">
