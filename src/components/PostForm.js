@@ -28,15 +28,14 @@ class PostForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="Form">
+      <form onSubmit={this.handleSubmit} className="postform_form">
         <h2>게시글</h2>
-        <table >
+        <table className="postform_table">
           <tbody>
             <tr>
-              <td><label htmlFor="title" className="label">제목</label></td>
+              <td><label htmlFor="title" className="postform_label">제목</label></td>
               <td>
                 <input
-                  className="Form-title"
                   value={this.state.title}
                   onChange={this.handleChange}
                   name="title"
@@ -46,10 +45,9 @@ class PostForm extends Component {
               </td>
             </tr>
             <tr>
-              <td><label htmlFor="title" className="label">작성자</label></td>
+              <td><label htmlFor="title" className="postform_label">작성자</label></td>
               <td>
                 <input
-                  className="Form-writer"
                   value={this.state.writer}
                   onChange={this.handleChange}
                   name="writer"
@@ -59,10 +57,10 @@ class PostForm extends Component {
               </td>
             </tr>
             <tr>
-              <td><label htmlFor="title" className="label">내용</label></td>
+              <td><label htmlFor="title" className="postform_label">내용</label></td>
               <td>
                 <input
-                  className="Form-content"
+                  className=".postform_content"
                   value={this.state.content}
                   onChange={this.handleChange}
                   name="content"
@@ -73,7 +71,7 @@ class PostForm extends Component {
           </tbody>
         </table>
         <div>
-          <button type="submit" className="Form-button">post</button>
+          <button type="submit" className="postform_button">post</button>
         </div>
       </form >
     );

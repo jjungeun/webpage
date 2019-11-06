@@ -1,31 +1,15 @@
-.td {
-  width: 155px;
+.postinfo_tr td {
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
   background: #eee;
 }
 
-.td-button {
-  margin-top:5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border:2px solid #09F;
-  background-color:#09F;
-  color:#fff;
-  width: 100px;
-  height: 40px;
-  font-size: 20px;
-  font-weight:bold;
-  text-align: center;
+.postinfo_title {
+  color: #0e5fc9;
 }
 
-.td-button:hover{
-  cursor: pointer;
-}
-
-.title:hover{
+.postinfo_title:hover{
   text-decoration: underline;
   cursor: pointer;
 }

@@ -3,8 +3,8 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border:2px solid #09F;
-  background-color:#09F;
+  border:2px solid rgb(4, 64, 104);
+  background-color:rgb(4, 64, 104);
   color:#fff;
   width: 100px;
   height: 40px;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import './PostInfoDetail.css';
 
 class PostInfoDetail extends Component {
+  
   state = {
     editMode: false,
     title: '',
@@ -49,14 +51,13 @@ class PostInfoDetail extends Component {
 
     if (editMode) {
       return (
-        <form className="Form">
+        <form className="detail_updateform">
           <table>
             <tbody>
               <tr>
-                <td><label htmlFor="title" className="label">제목</label></td>
+                <td><label htmlFor="title" className="detail_label">제목</label></td>
                 <td>
                   <input
-                    className="Form-title"
                     value={this.state.title}
                     onChange={this.handleUpdate}
                     name="title"
@@ -66,10 +67,9 @@ class PostInfoDetail extends Component {
                 </td>
               </tr>
               <tr>
-                <td><label htmlFor="title" className="label">작성자</label></td>
+                <td><label htmlFor="title" className="detail_label">작성자</label></td>
                 <td>
                   <input
-                    className="Form-writer"
                     value={this.state.writer}
                     onChange={this.handleUpdate}
                     name="writer"
@@ -79,10 +79,10 @@ class PostInfoDetail extends Component {
                 </td>
               </tr>
               <tr>
-                <td><label htmlFor="title" className="label">내용</label></td>
+                <td><label htmlFor="title" className="detail_label">내용</label></td>
                 <td>
                   <input
-                    className="Form-content"
+                    className="detail_content"
                     value={this.state.content}
                     onChange={this.handleUpdate}
                     name="content"
@@ -92,38 +92,18 @@ class PostInfoDetail extends Component {
               </tr>
             </tbody>
           </table>
-          <button onClick={this.handleToggle} className="td-button">update</button>
+          <button onClick={this.handleToggle} className="detail_button">update</button>
         </form>
       );
     } else {
       return (
-        <form className="Form">
-          <table>
-            <tbody>
-              <tr>
-                <td><label htmlFor="title" className="label">번호</label></td>
-                <td>{id}</td>
-              </tr>
-              <tr>
-                <td><label htmlFor="title" className="label">제목</label></td>
-                <td>{title}</td>
-              </tr>
-              <tr>
-                <td><label htmlFor="title" className="label">내용</label></td>
-                <td>{content}</td>
-              </tr>
-              <tr>
-                <td><label htmlFor="title" className="label">작성자</label></td>
-                <td>{writer}</td>
-              </tr>
-              <tr>
-                <td><label htmlFor="title" className="label">작성일</label></td>
-                <td>{date}</td>
-              </tr>
-            </tbody>
-          </table>
-          <button onClick={this.handleToggle} className="td-button">edit</button>
-          <button onClick={this.handleRemove} className="td-button">remove</button>
+        <form className="detail_form">
+          <h1>{title}</h1>
+          <label className="detail_label">작성자 : {writer}</label><br/>
+          <label className="detail_label">작성일 : {date}</label><br/>
+          <div className="detail_content">{content}</div><br/>
+          <button onClick={this.handleToggle} className="detail_button">edit</button>
+          <button onClick={this.handleRemove} className="detail_button">remove</button>
         </form>
       );
     }

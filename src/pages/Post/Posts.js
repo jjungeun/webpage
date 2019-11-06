@@ -4,9 +4,9 @@ import { AddPost, ListPost, DetailPost } from 'pages';
 import './Posts.css';
 
 class Post extends Component {
-  id = 0;
+  id = 1;
   state = {
-    post: [],
+    post: [{id:0,title:'hello',writer:'jungeun',content:'world',date:new Date().toLocaleString()}],
     filterId: '',
     keyword: ''
   }

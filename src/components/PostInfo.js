@@ -23,12 +23,11 @@ class PostInfo extends Component {
     const { id, title, content, writer, date } = this.props.post;
 
     return (
-      <tr>
-        <td className="td">{id}</td>
-        <td className="td"><label onClick={this.handleClick} className="title">{title}</label></td>
-        <td className="td">{writer}</td>
-        <td className="td">{content}</td>
-        <td className="td">{date}</td>
+      <tr className="postinfo_tr">
+        <td>{id}</td>
+        <td><label onClick={this.handleClick} className="postinfo_title">{title}</label></td>
+        <td>{writer}</td>
+        <td>{date}</td>
       </tr>
     );
   }

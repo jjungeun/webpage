@@ -1,4 +1,4 @@
-.table {
+.postlist_table {
   border-collapse: separate;
   border-spacing: 1px;
   text-align: center;
@@ -6,11 +6,19 @@
   margin: auto;
 }
 
-.table-th {
-  width: 150px;
+.postlist_table th {
+  width: 200px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   color: #fff;
   background: #153d73 ;
+}
+
+.postlist_table th.no {
+  width: 50px;
+}
+
+.postlist_table th.title {
+  width: 500px;
 }

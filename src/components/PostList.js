@@ -16,14 +16,13 @@ class PostList extends Component {
 
     return (
       <div>
-        <table className="table">
+        <table className="postlist_table">
           <thead>
             <tr>
-              <th scope="cols" className="table-th">번호</th>
-              <th scope="cols" className="table-th">제목</th>
-              <th scope="cols" className="table-th">작성자</th>
-              <th scope="cols" className="table-th">내용</th>
-              <th scope="cols" className="table-th">작성일</th>
+              <th scope="cols" className="no">No</th>
+              <th scope="cols" className="title">제목</th>
+              <th scope="cols">작성자</th>
+              <th scope="cols">작성일</th>
             </tr>
           </thead>
           <tbody>
