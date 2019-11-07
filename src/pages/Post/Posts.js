@@ -6,7 +6,7 @@ import './Posts.css';
 class Post extends Component {
   id = 1;
   state = {
-    post: [{id:0,title:'hello',writer:'jungeun',content:'world',date:new Date().toLocaleString()}],
+    post: [{ id: 0, title: 'hello', writer: 'jungeun', content: 'world', date: new Date().toLocaleString() }],
     filterId: '',
     keyword: ''
   }
@@ -45,13 +45,23 @@ class Post extends Component {
     this.props.history.push(`post/` + id);
   }
 
+  handleChange = (e) => {
+    this.setState({
+      keyword: e.target.value,
+    });
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return nextState !== this.state;
   }
 
   render() {
-    const { post, filterId } = this.state;
+    const { post, filterId, keyword } = this.state;
     const { match } = this.props;
+    const keywordList = post.filter(
+      post => post.title.indexOf(keyword) !== -1
+    );
+
     return (
       <div>
         <Switch>
@@ -68,8 +78,15 @@ class Post extends Component {
             />
           )} />
           <Route exact path="/post">
+            <p>
+              <input
+                placeholder="search post"
+                onChange={this.handleChange}
+                value={keyword}
+              />
+            </p>
             <ListPost
-              data={post}
+              data={keywordList}
               onClick={this.handleClick}
             />
             <Link to={`${match.url}/add`}>
