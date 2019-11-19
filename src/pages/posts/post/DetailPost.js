@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PostInfoDetail from 'components/PostInfoDetail';
+import PostInfoDetail from 'components/post/PostInfoDetail';
 import './DetailPost.css'
 
 class DetailPost extends Component {

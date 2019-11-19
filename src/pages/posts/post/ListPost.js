@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostList from 'components/PostList';
+import PostList from 'components/post/PostList';
 
 class ListPost extends Component {
   static defaultProps = {
@@ -9,12 +9,12 @@ class ListPost extends Component {
   }
 
   render() {
-    const { data, onUpdate, onRemove ,onClick } = this.props;
+    const { data, onUpdate, onRemove, onClick } = this.props;
     return (
       <div>
         <h2>Post List</h2>
         <PostList
-          data={data}
+          data={data.sort((a, b) => a.id - b.id)}
           onUpdate={onUpdate}
           onRemove={onRemove}
           onClick={onClick}

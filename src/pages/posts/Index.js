@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { AddPost, ListPost, DetailPost } from 'pages';
-import './Posts.css';
+import './Index.css';
 
-class Post extends Component {
-  id = 1;
+class Index extends Component {
   state = {
-    post: [{ id: 0, title: 'hello', writer: 'jungeun', content: 'world', date: new Date().toLocaleString() }],
+    post: [],
     filterId: '',
     keyword: ''
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const nextPost = nextProps.post;
+    if (nextPost !== prevState.post) {
+      return { post: nextPost }
+    }
+    return null;
+  }
+
   handleCreate = (data) => {
-    const { post } = this.state;
-    this.setState({
-      post: post.concat({ id: this.id++, ...data })
-    });
+    const { onCreate } = this.props;
+    onCreate({ ...data });
     this.props.history.goBack();
   }
 
   handleUpdate = (id, data) => {
-    const { post } = this.state;
-    this.setState({
-      post: post.map(post => post.id === id
-        ? { ...post, ...data }
-        : post
-      )
-    });
+    const { onUpdate } = this.props;
+    onUpdate(id, data);
     this.props.history.replace(`/post/` + id);
   }
 
   handleRemove = (id) => {
-    const { post } = this.state;
-    this.setState({
-      post: post.filter(post => post.id !== id)
-    });
+    const { onDelete } = this.props;
+    onDelete(id);
     this.props.history.replace(`/post`);
   }
 
@@ -61,7 +59,6 @@ class Post extends Component {
     const keywordList = post.filter(
       post => post.title.indexOf(keyword) !== -1
     );
-
     return (
       <div>
         <Switch>
@@ -99,4 +96,4 @@ class Post extends Component {
   }
 };
 
-export default Post;
+export default Index;

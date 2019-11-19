@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostForm from 'components/PostForm';
+import PostForm from 'components/post/PostForm';
 
 class AddPost extends Component {
   render() {
