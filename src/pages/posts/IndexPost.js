@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { AddPost, ListPost, DetailPost } from 'pages';
-import './Index.css';
+import './IndexPost.css';
 
-class Index extends Component {
+class IndexPost extends Component {
   state = {
     post: [],
     filterId: '',
@@ -60,7 +60,8 @@ class Index extends Component {
       post => post.title.indexOf(keyword) !== -1
     );
     return (
-      <div>
+      console.log(this.props),
+      < div >
         <Switch>
           <Route path="/post/add">
             <AddPost onCreate={this.handleCreate} />
@@ -96,4 +97,4 @@ class Index extends Component {
   }
 };
 
-export default Index;
+export default IndexPost;

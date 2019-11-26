@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
-import { Home, Index } from 'pages';
+import { Home, IndexPost } from 'pages';
 import Menu from 'components/Menu';
 import {
   initFire,
@@ -75,7 +75,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route
           path="/post"
-          render={(props) => <Index
+          render={(props) => <IndexPost
             {...props}
             id={id}
             post={posts}
