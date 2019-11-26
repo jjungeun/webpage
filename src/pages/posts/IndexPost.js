@@ -40,7 +40,7 @@ class IndexPost extends Component {
     this.setState({
       filterId: id
     })
-    this.props.history.push(`post/` + id);
+    this.props.history.replace(`/post/` + id);
   }
 
   handleChange = (e) => {
@@ -59,23 +59,32 @@ class IndexPost extends Component {
     const keywordList = post.filter(
       post => post.title.indexOf(keyword) !== -1
     );
+    console.log(this.props)
+
     return (
-      console.log(this.props),
-      < div >
+      <>
         <Switch>
-          <Route path="/post/add">
+          <Route path={`${match.url}/add`}>
             <AddPost onCreate={this.handleCreate} />
           </Route>
-          <Route path={`/post/:id`} render={() => (
-            <DetailPost
-              {...this.props}
-              data={post}
-              id={filterId}
-              onUpdate={this.handleUpdate}
-              onRemove={this.handleRemove}
-            />
+          <Route path={`${match.url}/:id`} render={() => (
+            filterId ?
+              <DetailPost
+                {...this.props}
+                data={post}
+                id={filterId}
+                onUpdate={this.handleUpdate}
+                onRemove={this.handleRemove}
+              />
+              : <DetailPost
+                {...this.props}
+                data={post}
+                id={Number(this.props.location.pathname.split('/')[2])}
+                onUpdate={this.handleUpdate}
+                onRemove={this.handleRemove}
+              />
           )} />
-          <Route exact path="/post">
+          <Route exact path={match.url}>
             <p>
               <input
                 placeholder="search post"
@@ -92,7 +101,7 @@ class IndexPost extends Component {
             </Link>
           </Route>
         </Switch>
-      </div >
+      </>
     );
   }
 };

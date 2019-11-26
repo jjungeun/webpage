@@ -13,13 +13,16 @@ import {
 
 class App extends Component {
   state = {
+    idLoading: false,
+    postLoading: false,
     id: 0,
     posts: []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     initID().get().then(res => {
       this.setState({
+        idLoading: true,
         id: res.data().id
       })
     });
@@ -30,6 +33,7 @@ class App extends Component {
         postsFromDB.push(doc.data());
       })
       this.setState({
+        postLoading: true,
         posts: postsFromDB
       })
     });
@@ -68,24 +72,33 @@ class App extends Component {
   }
 
   render() {
-    const { id, posts } = this.state;
-    return (
-      <div className="App">
-        <Menu />
-        <Route exact path="/" component={Home} />
-        <Route
-          path="/post"
-          render={(props) => <IndexPost
-            {...props}
-            id={id}
-            post={posts}
-            onCreate={this.handleCreate}
-            onUpdate={this.handleUpdate}
-            onDelete={this.handleDelete}
-          />}
-        />
-      </div >
-    );
+    const { idLoading, id, postLoading, posts } = this.state;
+    if (idLoading && postLoading) {
+      return (
+        <div className="App">
+          <Menu />
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/post"
+            render={(props) => <IndexPost
+              {...props}
+              id={id}
+              post={posts}
+              onCreate={this.handleCreate}
+              onUpdate={this.handleUpdate}
+              onDelete={this.handleDelete}
+            />}
+          />
+        </div >
+      );
+    } else {
+      return (
+        <div className="App">
+          <Menu />
+          <Route exact path="/" component={Home} />
+        </div >
+      );
+    }
   }
 }
 
