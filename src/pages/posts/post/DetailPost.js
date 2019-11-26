@@ -23,7 +23,7 @@ class DetailPost extends Component {
   render() {
     const { match, onUpdate, onRemove } = this.props;
     const { post } = this.state;
-    console.log(this.props)
+
     return (
       <div>
         <PostInfoDetail

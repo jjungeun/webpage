@@ -59,7 +59,6 @@ class IndexPost extends Component {
     const keywordList = post.filter(
       post => post.title.indexOf(keyword) !== -1
     );
-    console.log(this.props)
 
     return (
       <>
